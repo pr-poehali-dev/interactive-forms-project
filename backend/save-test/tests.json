@@ -1,0 +1,33 @@
+{
+  "tests": [
+    {
+      "name": "Save test result successfully",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "score": 45,
+        "resultType": "high",
+        "answers": [10, 9, 10, 8, 8],
+        "userSession": "test-session-123"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Handle missing fields",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "score": 30
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -32,7 +33,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen gradient-purple-blue">
-      <div className="container mx-auto px-4 py-16">
+      <Navigation />
+      <div className="container mx-auto px-4 py-16 pt-32">
         <div className="text-center mb-16 animate-fade-in">
           <div className="text-7xl mb-6">✨</div>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">

@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
 
 interface Question {
   id: number;
@@ -103,16 +104,9 @@ export default function Tests() {
 
   return (
     <div className="min-h-screen gradient-purple-blue py-12 px-4">
-      <div className="max-w-3xl mx-auto">
+      <Navigation />
+      <div className="max-w-3xl mx-auto pt-24">
         <div className="mb-8">
-          <Button
-            variant="ghost"
-            onClick={handleBack}
-            className="text-white hover:bg-white/20 mb-4"
-          >
-            <Icon name="ArrowLeft" size={20} className="mr-2" />
-            Назад
-          </Button>
           
           <div className="glassmorphism rounded-2xl p-6">
             <div className="flex items-center justify-between mb-4">

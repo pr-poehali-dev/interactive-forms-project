@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import Icon from '@/components/ui/icon';
 import { useEffect, useState } from 'react';
+import Navigation from '@/components/Navigation';
 
 interface ResultType {
   title: string;
@@ -64,6 +65,30 @@ export default function Results() {
       return;
     }
 
+    const saveTestResult = async () => {
+      const resultType = score >= 40 ? 'high' : score >= 30 ? 'medium' : 'low';
+      const userSession = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      
+      try {
+        await fetch('https://functions.poehali.dev/d96a0c4d-166a-456c-8931-51da3944a570', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            score,
+            resultType,
+            answers,
+            userSession
+          })
+        });
+      } catch (error) {
+        console.error('Failed to save test result:', error);
+      }
+    };
+
+    saveTestResult();
+
     const duration = 2000;
     const steps = 60;
     const increment = score / steps;
@@ -80,7 +105,7 @@ export default function Results() {
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [score, navigate, location.state]);
+  }, [score, answers, navigate, location.state]);
 
   const getResultType = (totalScore: number): ResultType => {
     if (totalScore >= 40) return resultTypes.high;
@@ -94,15 +119,8 @@ export default function Results() {
 
   return (
     <div className="min-h-screen gradient-purple-blue py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/')}
-          className="text-white hover:bg-white/20 mb-8"
-        >
-          <Icon name="Home" size={20} className="mr-2" />
-          На главную
-        </Button>
+      <Navigation />
+      <div className="max-w-4xl mx-auto pt-24">
 
         <Card className="p-8 md:p-12 rounded-3xl shadow-2xl border-0 animate-fade-in">
           <div className="text-center mb-12">

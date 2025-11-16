@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import Navigation from '@/components/Navigation';
 
 export default function Contact() {
   const navigate = useNavigate();
@@ -30,15 +31,8 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen gradient-purple-blue py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/')}
-          className="text-white hover:bg-white/20 mb-8"
-        >
-          <Icon name="ArrowLeft" size={20} className="mr-2" />
-          Назад
-        </Button>
+      <Navigation />
+      <div className="max-w-4xl mx-auto pt-24">
 
         <div className="grid md:grid-cols-2 gap-8">
           <Card className="p-8 rounded-3xl shadow-2xl border-0 animate-fade-in">

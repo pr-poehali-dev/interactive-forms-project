@@ -8,6 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import Navigation from '@/components/Navigation';
 
 export default function Surveys() {
   const navigate = useNavigate();
@@ -42,15 +43,8 @@ export default function Surveys() {
 
   return (
     <div className="min-h-screen gradient-purple-blue py-12 px-4">
-      <div className="max-w-3xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/')}
-          className="text-white hover:bg-white/20 mb-8"
-        >
-          <Icon name="ArrowLeft" size={20} className="mr-2" />
-          Назад
-        </Button>
+      <Navigation />
+      <div className="max-w-3xl mx-auto pt-24">
 
         <Card className="p-8 rounded-3xl shadow-2xl border-0 animate-fade-in">
           <div className="text-center mb-8">
